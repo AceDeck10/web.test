@@ -24,7 +24,8 @@ passwd = form.getvalue('password')
 
 cur = conn.cursor()
 
-cur.execute('INSERT INTO Users(username, user_passwd) VALUES(' + name + ',' + passwd + ')')
+cur.execute('INSERT INTO tbl_users(username, user_passwd) VALUES(%s, %s)', (name, passwd))
+conn.commit()
 
 print()
 print(name)
