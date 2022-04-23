@@ -27,8 +27,13 @@ cur = conn.cursor()
 cur.execute('INSERT INTO tbl_users(username, user_passwd) VALUES(%s, %s)', (name, passwd))
 conn.commit()
 
-print()
-print(name)
-print(passwd)
+cur.execute('SELECT * FROM tbl_users')
+allUsers = cur.fetchall()
+
+for row in allUsers:
+    print('Id = ', row[0])
+    print('Username = ', row[1])
+    print('Password = ', row[2])
+    print('<br/>')
 
 cur.close()
