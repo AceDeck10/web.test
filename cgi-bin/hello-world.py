@@ -10,11 +10,9 @@ DB_PASS = '@c3c0m10'
 
 import cgi
 import psycopg2
+import requests
 
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
-
-
-
 
 form = cgi.FieldStorage()
 
@@ -27,13 +25,18 @@ cur = conn.cursor()
 cur.execute('INSERT INTO tbl_users(username, user_passwd) VALUES(%s, %s)', (name, passwd))
 conn.commit()
 
-cur.execute('SELECT * FROM tbl_users')
+cur.execute('SELECT * FROM tbl_users WHERE username=' + name)
 allUsers = cur.fetchall()
 
-for row in allUsers:
-    print('Id = ', row[0])
-    print('Username = ', row[1])
-    print('Password = ', row[2])
-    print('<br/>')
+#for row in allUsers:
+#    print('Id = ', row[0])
+#    print('Username = ', row[1])
+#    print('Password = ', row[2])
+#    print('<br/>')
+
+
+
+payload = {''}
+requests.get('../index.html?name=')
 
 cur.close()
