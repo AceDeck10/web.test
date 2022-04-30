@@ -34,9 +34,7 @@ allUsers = cur.fetchall()
 #    print('Password = ', row[2])
 #    print('<br/>')
 
-
-
-payload = {''}
-requests.get('../index.html?name=')
+res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password=' + passwd)
+res.content
 
 cur.close()
