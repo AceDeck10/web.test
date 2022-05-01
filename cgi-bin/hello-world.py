@@ -20,6 +20,13 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         name = 'World'
         query_components = parse_qs(urlparse(self.path).query)
+        if 'name' in query_components:
+            name = query_components['name'][0]
+        
+        html = res.text
+        self.wfile.write(bytes(html, 'utf8'))
+
+        return
 
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 
