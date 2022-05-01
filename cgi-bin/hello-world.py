@@ -35,8 +35,9 @@ allUsers = cur.fetchall()
 #    print('<br/>')
 
 res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password=' + passwd)
-res.status_code  # 302
-res.url
-res.headers['Location']
+print(res.status_code)
+print(res.history)
+print(res.url)
+
 
 cur.close()
