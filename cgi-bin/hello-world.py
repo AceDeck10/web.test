@@ -34,10 +34,11 @@ allUsers = cur.fetchall()
 #    print('Password = ', row[2])
 #    print('<br/>')
 
-res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password=' + passwd)
+res = requests.get('http://127.0.0.1:8000/?name=' + name + 'Password=' + passwd)
 print(res.status_code)
 print(res.history)
 print(res.url)
+print(res.text)
 
 
 cur.close()
