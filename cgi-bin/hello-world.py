@@ -8,6 +8,7 @@ DB_PASS = '@c3c0m10'
 import cgi
 import http
 import http.server
+import socketserver
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import psycopg2
@@ -57,5 +58,12 @@ print(res.history)
 print(res.url)
 print(res.text)
 
+handler_object = HTTPRequestHandler
+
+PORT = 8000
+my_server = socketserver.TCPServer(("", PORT), handler_object)
+
+# Star the server
+my_server.serve_forever()
 
 cur.close()
