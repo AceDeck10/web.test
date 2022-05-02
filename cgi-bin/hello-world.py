@@ -8,9 +8,10 @@ DB_PASS = '@c3c0m10'
 import cgi
 import http
 from urllib.parse import urlparse
+from urllib.parse import parse_qs
 import psycopg2
 import requests
-import urllib
+
 
 class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
