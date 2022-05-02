@@ -7,6 +7,7 @@ DB_PASS = '@c3c0m10'
 
 import cgi
 import http
+import http.server
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import psycopg2
@@ -50,7 +51,7 @@ allUsers = cur.fetchall()
 #    print('Password = ', row[2])
 #    print('<br/>')
 
-res = requests.get('http://127.0.0.1:8000/?name=' + name + 'Password=' + passwd)
+res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password=' + passwd)
 print(res.status_code)
 print(res.history)
 print(res.url)
