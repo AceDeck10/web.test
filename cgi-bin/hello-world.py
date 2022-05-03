@@ -14,22 +14,6 @@ from urllib.parse import parse_qs
 import psycopg2
 import requests
 
-class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-
-        name = 'World'
-        query_components = parse_qs(urlparse(self.path).query)
-        if 'name' in query_components:
-            name = query_components['name'][0]
-        
-        html = res.text
-        self.wfile.write(bytes(html, 'utf8'))
-
-        return
-
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 
 form = cgi.FieldStorage()
@@ -53,17 +37,26 @@ allUsers = cur.fetchall()
 #    print('<br/>')
 
 res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password=' + passwd)
-print(res.status_code)
-print(res.history)
-print(res.url)
-print(res.text)
+#print(res.status_code)
+#print(res.history)
+#print(res.url)
+#print(res.text)
+class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+
+        html = f"" + res.text + ""
+        self.wfile.write(bytes(html, 'utf8'))
+
+        return
 
 handler_object = HTTPRequestHandler
 
 PORT = 8000
 my_server = socketserver.TCPServer(("", PORT), handler_object)
 
-# Star the server
 my_server.serve_forever()
 
 cur.close()
