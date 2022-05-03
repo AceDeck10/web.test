@@ -43,7 +43,7 @@ res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password='
 #print(res.text)
 class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
+        self.send_response(302)
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
