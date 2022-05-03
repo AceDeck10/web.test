@@ -46,11 +46,9 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(302)
         self.send_header("Content-type", "text/html")
         self.end_headers()
+        self.path = res.url
 
-        html = res.text
-        self.wfile.write(bytes(html, 'utf8'))
-
-        return
+        return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 handler_object = HTTPRequestHandler
 
