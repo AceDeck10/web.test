@@ -47,7 +47,7 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-        html = f"" + res.text + ""
+        html = res.text
         self.wfile.write(bytes(html, 'utf8'))
 
         return
