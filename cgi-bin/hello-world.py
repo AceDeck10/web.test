@@ -44,12 +44,12 @@ print(res.url)
 print(res.text)
 #class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 #    def do_GET(self):
- #       self.send_response(302)
-  #      self.send_header("Content-type", "text/html")
-   #     self.end_headers()
-    #    self.path = "http://127.0.0.1:8000/index.html"
+#       self.send_response(302)
+#       self.send_header("Content-type", "text/html")
+#       self.end_headers()
+#       self.path = "http://127.0.0.1:8000/index.html"
 #
-#        return http.server.SimpleHTTPRequestHandler.do_GET(self)
+#       return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 #handler_object = HTTPRequestHandler
 
