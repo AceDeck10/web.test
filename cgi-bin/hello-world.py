@@ -38,11 +38,11 @@ allUsers = cur.fetchall()
 #    print('<br/>')
 
 res = request.urlopen('http://127.0.0.1:8000/index.html?name=' + name + '&Password=' + passwd)
-#print(res.status_code)
-#print(res.history)
-#print(res.url)
-#print(res.text)
-#class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+print(res.status_code)
+print(res.history)
+print(res.url)
+print(res.text)
+class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 #    def do_GET(self):
  #       self.send_response(302)
   #      self.send_header("Content-type", "text/html")
