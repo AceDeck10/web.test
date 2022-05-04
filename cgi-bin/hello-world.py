@@ -9,6 +9,7 @@ import cgi
 import http
 import http.server
 import socketserver
+from urllib import request
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import psycopg2
@@ -36,25 +37,25 @@ allUsers = cur.fetchall()
 #    print('Password = ', row[2])
 #    print('<br/>')
 
-res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + 'Password=' + passwd)
+res = request.urlopen('http://127.0.0.1:8000/index.html?name=' + name + '&Password=' + passwd)
 #print(res.status_code)
 #print(res.history)
 #print(res.url)
 #print(res.text)
-class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(302)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.path = res.url
+#class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+#    def do_GET(self):
+ #       self.send_response(302)
+  #      self.send_header("Content-type", "text/html")
+   #     self.end_headers()
+    #    self.path = "http://127.0.0.1:8000/index.html"
+#
+#        return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
-        return http.server.SimpleHTTPRequestHandler.do_GET(self)
+#handler_object = HTTPRequestHandler
 
-handler_object = HTTPRequestHandler
+#PORT = 8000
+#my_server = socketserver.TCPServer(("", PORT), handler_object)
 
-PORT = 8000
-my_server = socketserver.TCPServer(("", PORT), handler_object)
-
-my_server.serve_forever()
+#my_server.serve_forever()
 
 cur.close()
