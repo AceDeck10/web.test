@@ -42,7 +42,7 @@ print(res.status_code)
 print(res.history)
 print(res.url)
 print(res.text)
-class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+#class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 #    def do_GET(self):
  #       self.send_response(302)
   #      self.send_header("Content-type", "text/html")
