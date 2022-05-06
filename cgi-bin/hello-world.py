@@ -14,6 +14,7 @@ from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import psycopg2
 import requests
+import webbrowser
 
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 
@@ -37,11 +38,10 @@ allUsers = cur.fetchall()
 #    print('Password = ', row[2])
 #    print('<br/>')
 
-res = request.urlopen('http://127.0.0.1:8000/index.html?name=' + name + '&Password=' + passwd)
-print(res.status_code)
-print(res.history)
-print(res.url)
-print(res.text)
+res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + '&Password=' + passwd)
+
+webbrowser.open(res.url)
+
 #class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 #    def do_GET(self):
 #       self.send_response(302)
