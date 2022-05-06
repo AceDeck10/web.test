@@ -40,6 +40,7 @@ allUsers = cur.fetchall()
 res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + '&Password=' + passwd)
 print(res.status_code)
 print(res.history)
+print(res.text)
 print("Location: ", res.url, "/r/n")
 
 #class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
