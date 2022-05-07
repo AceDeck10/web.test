@@ -30,18 +30,17 @@ conn.commit()
 
 cur.execute('SELECT * FROM tbl_users')
 allUsers = cur.fetchall()
+cur.close()
 
-#for row in allUsers:
 #    print('Id = ', row[0])
 #    print('Username = ', row[1])
 #    print('Password = ', row[2])
 #    print('<br/>')
 
-res = requests.get('http://127.0.0.1:8000/index.html?name=' + name + '&Password=' + passwd)
-print(res.status_code)
-print(res.history)
-print("Content-type: text/html")
-print("Location: ", res.url, "/r/n")
+print("Status: 303\r\n")
+print("Location: http://127.0.0.1:8000/index.html/\r\n")
+print("Content-Type: text/html\r\n")
+#print("Location: http://127.0.0.1:8000/index.html?name=" + name + "&Password=" + passwd"/r/n")
 
 #class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 #    def do_GET(self):
@@ -59,4 +58,4 @@ print("Location: ", res.url, "/r/n")
 
 #my_server.serve_forever()
 
-cur.close()
+
