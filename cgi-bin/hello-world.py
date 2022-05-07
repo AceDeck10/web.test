@@ -1,3 +1,8 @@
+#************************************
+# Server side CGI Script for Web.test
+# Author@ Austine D. Odhiambo
+#************************************
+
 #!/usr/bin/env python3
 
 DB_HOST = 'localhost'
