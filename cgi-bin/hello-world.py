@@ -1,7 +1,7 @@
 #************************************
 #
 # Server side CGI Script for Web.test
-# Author@ Austine D. Odhiambo
+# @author Austine D. Odhiambo
 #
 # PROJECT ABANDONED!!
 #
