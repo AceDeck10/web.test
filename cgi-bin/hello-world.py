@@ -3,6 +3,8 @@
 # Server side CGI Script for Web.test
 # Author@ Austine D. Odhiambo
 #
+# PROJECT ABANDONED!!
+#
 #************************************
 
 #!/usr/bin/env python3
